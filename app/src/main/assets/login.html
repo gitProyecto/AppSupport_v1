@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>AppSupport</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <link type="text/css" href="css/jquery.toastmessage-min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-1.5.min.js"></script>
+    <script type="text/javascript" src="js/jquery.toastmessage-min.js"></script>
+    <script type="text/javascript" src="js/alertas.js"></script>
+
+</head>
+<body>
+
+
+
+<body  class="align">
+
+<div class="site__container">
+
+    <header>
+        <center><h1 >Soporte Técnico</h1></center>
+    </header>
+
+    <div class="grid__container">
+
+
+
+        <form id="form1" action="" method=""  class="form form--login" autocomplete="off" onsubmit="Register(); return false;">
+
+            <H3><p class="text--center"><font color="red">Subscribe</font></p></H3>
+
+
+            <div class="form__field">
+
+                <label class="fontawesome-user" ><span class="hidden">Full Name</span></label>
+                <input   id="login__name" type="text" class="form__input" placeholder="Full Name" required>
+            </div>
+
+            <div class="form__field">
+                <label class="fontawesome-envelope-alt" ><span class="hidden">Email</span></label>
+                <input   id="login__email" type="text" class="form__input" placeholder="Email" required>
+            </div>
+
+            <div class="form__field">
+                <label class="fontawesome-lock" ><span class="hidden">Password</span></label>
+                <input   id="login__pass" type="text" class="form__input" placeholder="Password" required>
+            </div>
+
+
+            <div class="form__field">
+                <input type="submit" value="Sign Up" >
+            </div>
+
+            <div >
+                <center><h5 style="color:black">  Already a member ? <a href="#tosubscribe" onclick="actionS()" class="to_subscribe">  Go an Login </a></h5></center>
+            </div>
+
+        </form>
+
+        <script> document.getElementById("form1").style.display = "none";  </script>
+
+
+        <form id="form" action="" method=""  class="form form--login" autocomplete="off" onsubmit="Login(); return false;">
+
+            <H3><p class="text--center"><font color="red">Authentication Required </font></p></H3>
+
+
+            <div class="form__field">
+                <label class="fontawesome-user" ><span class="hidden">Username</span></label>
+                <input   id="login__username" type="text" class="form__input" placeholder="Username" required>
+            </div>
+
+            <div class="form__field">
+                <label class="fontawesome-lock" ><span class="hidden">Password</span></label>
+                <input   id="login__password" type="password" class="form__input" placeholder="Password" required>
+            </div>
+
+            <div class="form__field">
+                <input type="submit" value="Login" onclick="" >
+            </div>
+
+            <div >
+                <center><h5 style="color:black">  Not a member yet ? <a  onclick="actionL()" href="#tosubscribe" class="to_subscribe">  Sign Up </a></h5></center>
+            </div>
+
+        </form>
+
+
+
+
+
+    </div>
+
+</div>
+
+</body>
+
+
+
+</body>
+
+
+<script type="text/javascript">
+
+
+  function actionL(){
+		document.getElementById("form").style.display = "none";
+		document.getElementById("form1").style.display = "block"
+  }
+
+  function actionS(){
+		document.getElementById("form1").style.display = "none";
+		document.getElementById("form").style.display = "block";
+  }
+
+
+
+ function registerUser() {
+
+    var name=document.getElementById("login__name").value;
+    var pass=document.getElementById("login__pass").value;
+    var email=document.getElementById("login__email").value;
+
+    var resp = Android.verifyLogIn(name,email, pass);
+
+    if(resp == 1){
+
+       showSuccessToast();
+
+       setTimeout(function(){
+          location.href="menu.html";
+        }, 1500);
+
+    }else showErrorToast();
+
+
+
+ }
+
+ function Login(){
+
+    var email=document.getElementById("login__username").value;
+    var pass=document.getElementById("login__password").value;
+
+    Android.logIn(email,pass);
+
+ }
+
+ function Register(){
+
+    var name=document.getElementById("login__name").value;
+    var pass=document.getElementById("login__pass").value;
+    var email=document.getElementById("login__email").value;
+    Android.registerLogin(name,email,pass);
+
+ }
+
+
+
+ </script>
+</body>
+</html>

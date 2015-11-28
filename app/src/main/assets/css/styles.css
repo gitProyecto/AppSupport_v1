@@ -1,0 +1,183 @@
+
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  font: 400 0.875rem/1.5 "Open Sans", sans-serif;
+  margin: 0;
+  min-height: 100%;
+}
+
+a {
+  color: #FF0000;
+  outline: 0;
+}
+a:focus, a:hover {
+  text-decoration: underline;
+}
+
+
+input {
+  border: 0;
+  color: #000;
+  font: bold;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+}
+
+.form input[type="password"], .form input[type="text"], .form input[type="submit"] {
+  width: 100%;
+}
+
+
+.site__container {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 3rem 0;
+}
+
+.form--login {
+  color: #FFFFFF;
+}
+
+.form--login label,
+.form--login input[type="text"],
+.form--login input[type="password"],
+.form--login input[type="submit"] {
+  border-radius: 0.25rem;
+  padding: 1rem;
+}
+
+.form--login label {
+  background-color: #3b4148;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+.form--login input[type="text"], .form--login input[type="password"] {
+  background-color: #FFFFFF;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+   font-size: 12pt;
+    border-width: thin;
+    border-style: solid;
+    border-color: black;
+}
+
+.form--login input[type="text"]:focus, .form--login input[type="text"]:hover, .form--login input[type="password"]:focus, .form--login input[type="password"]:hover {
+  background-color: #FFFFFF;
+}
+
+
+.form--login input[type="submit"] {
+  background-color: #A4A4A4;
+  color: #000;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.form--login input[type="submit"]:active {
+  background-color: #D8D8D8;
+}
+.form__field {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 1rem;
+}
+.form__input {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.align {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  position: absolute;    
+  overflow: hidden;
+  width: 1px;
+}
+
+.text--center {
+  text-align: center;
+}
+
+.grid__container {
+  margin: 0 auto;
+  max-width: 20rem;
+  width: 90%;
+}
+
+
+header {
+display: block;
+position: fixed;
+top: 0;
+z-index: 9999;
+height: 55px;
+width: 100%;
+max-width: 100%;
+border-bottom: 1px solid #262422;
+-webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+-moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+box-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
+background: #5a5955;
+background: -moz-linear-gradient(top,  #5a5955 0%, #51504c 50%, #494744 51%, #3f3d3a 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5a5955), color-stop(50%,#51504c), color-stop(51%,#494744), color-stop(100%,#3f3d3a));
+background: -webkit-linear-gradient(top,  #5a5955 0%,#51504c 50%,#494744 51%,#3f3d3a 100%);
+background: -o-linear-gradient(top,  #5a5955 0%,#51504c 50%,#494744 51%,#3f3d3a 100%);
+background: -ms-linear-gradient(top,  #5a5955 0%,#51504c 50%,#494744 51%,#3f3d3a 100%);
+background: linear-gradient(to bottom,  #5a5955 0%,#51504c 50%,#494744 51%,#3f3d3a 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5955', endColorstr='#3f3d3a',GradientType=0 );
+}
+
+header h1 {
+	font-size: 1.7em;
+	font-family: Tahoma,
+	Arial, sans-serif;
+	font-weight: bold;
+	line-height: 20px;
+	text-align: center;
+	color: #efefef;
+	text-shadow: 1px 1px 0px #000;
+
+
+}
+
+

@@ -1,0 +1,224 @@
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+     <link rel="stylesheet" type="text/css" href="css/styleslist.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+    <script type="text/javascript" src="js/retina.js"></script>
+
+    <script src="js/Chart.js"></script>
+
+</head>
+
+<body onload="data();">
+<div id="view">
+    <header>
+        <h1>iFilters</h1>
+    </header>
+
+    <div id="container">
+        <ul id="list">
+
+        </ul>
+    </div>
+</div>
+
+<br><br><button onclick="myFunction()">Try it</button><br><br>
+
+<script type="text/javascript">
+
+
+
+var i=0;
+var aux=-1;
+
+$(document).ready(function(){
+	$("a").on("click", function(e){
+		e.preventDefault();
+	});
+});
+
+
+function create(htmlStr) {
+    var frag = document.createDocumentFragment(),
+        temp = document.createElement('div');
+    temp.innerHTML = htmlStr;
+    while (temp.firstChild) {
+        frag.appendChild(temp.firstChild);
+    }
+    return frag;
+}
+
+function data(){
+
+    var text =  Android.dataiFilter().toString();
+    var obj = JSON.parse(text);
+    var len = Object.keys(obj).length;
+
+
+
+    for (var i=0; i<len; i++){
+
+     var st = "red"
+
+    if(obj[i].status == "1"){
+        st ="green";
+    }
+
+    var node = document.createElement("li");
+	var fragment = create('<a href="#" id="'+obj[i].id+'"  ><li class="clearfix" >'+
+						'<div ><h2>'+obj[i].name+'</h2></div>'+
+						'<table WIDTH=100%> <tr>'+
+						        '<td><img src="images/'+st+'.png"  WIDTH=40 HEIGHT=40 ></td>'+
+								'<td><img src="images/ups.png"  WIDTH=40 HEIGHT=40 ></td>'+
+								'<td><img src="images/internet.png"  WIDTH=40 HEIGHT=40 ></td>'+
+								'<td><img src="images/switch.png"  WIDTH=40 HEIGHT=40 ></td>'+
+								'<td><img src="images/server.png"  WIDTH=40 HEIGHT=40 ></td>'+
+								'<td><img src="images/vpn.png"  WIDTH=40 HEIGHT=40 ></td>'+
+								'</tr><tr><td >Status</td><td>UPS</td><td>Internet</td><td>Switch</td><td>Server</td><td>VPN</td></tr> </table>'+
+						'<br></li></a>');
+
+    node.onclick = function () {
+           thisindex(this);
+        };
+        node.appendChild(fragment);                              // Append the text to <li>
+        document.getElementById("list").appendChild(node);
+
+    }
+}
+
+
+function myFunction() {
+
+
+
+var node = document.createElement("li");
+	var fragment = create('<a href="#"><li class="clearfix">'+
+						'<div ><span class="price" style="float:right"><br>Online</span><h2>Alta en red corporativo</h2></div>'+
+						'<table WIDTH=100%> <tr>'+
+								  '<td><img src="images/ups.png"  WIDTH=40 HEIGHT=40 ></td>'+
+								 '<td><img src="images/internet.png"  WIDTH=40 HEIGHT=40 ></td>'+
+								 '<td><img src="images/internet.png"  WIDTH=40 HEIGHT=40 ></td>'+
+								 '<td><img src="images/ifilter.png"  WIDTH=40 HEIGHT=40 ></td>'+
+								 '<td><img src="images/switch.png"  WIDTH=40 HEIGHT=40 ></td>'+
+								 '<td><img src="images/server.png"  WIDTH=40 HEIGHT=40 ></td>'+
+								 '<td><img src="images/vpn.png"  WIDTH=40 HEIGHT=40 ></td>'+
+								 '</tr><tr><td >UPS</td><td>Infinitum</td><td>Alestra</td><td>iFilter</td><td>Switch</td><td>Server</td><td>VPN</td></tr> </table>'+
+						'</li></a>');
+
+
+node.onclick = function () {
+	   thisindex(this);
+	};
+	node.appendChild(fragment);                              // Append the text to <li>
+	document.getElementById("list").appendChild(node);
+
+
+
+
+}
+
+function thisindex(elm)
+{
+
+    var re = document.getElementById('ele');
+	if (!re){
+		console.log("El elemento selecionado no existe");
+	} else {
+		var padre = re.parentNode;
+		padre.removeChild(re);
+	}
+
+ var the_li = elm;
+ var the_ul = elm.parentNode;
+ var li_list = the_ul.childNodes;
+ var count = 0; // Tracks the index of LI nodes
+
+ // Step through all the child nodes of the UL
+ for( var i = 0; i < li_list.length; i++ )
+ {
+ var node = li_list.item(i);
+ if( node )
+ {
+ // Check to see if the node is a LI
+ if( node.nodeName == "LI" )
+ {
+ // Increment the count of LI nodes
+ count++;
+ // Check to see if this node is the one passed in
+ if( the_li == node )
+ {
+ // If so, alert the current count
+ //alert(count);
+	if(aux == count){
+		aux=-1;
+	}else
+		info(count);
+ }
+ }
+ }
+ }
+}
+
+
+function info(n){
+
+	var node = document.createElement("LI");
+    node.id = 'ele';
+	var fragment = create('<div style="width:100%"> <div><canvas id="canvas" height="100" ></canvas>  </div> </div>');
+
+	var d = document.getElementById('list');
+	node.appendChild(fragment);
+	d.insertBefore(node, d.children[n]);
+	aux=n;
+
+	graf();
+
+}
+
+
+    var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+
+    var lineChartData = {
+      //labels : ["January","February","March","April","May","June","July","August","September","October","November","December"],
+      labels : ["","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday",""],
+
+      datasets : [
+        {
+          label: "My First dataset",
+          fillColor : "rgba(220,220,220,0.2)",
+          strokeColor : "rgba(220,220,220,1)",
+          pointColor : "rgba(220,220,220,1)",
+          pointStrokeColor : "#fff",
+          pointHighlightFill : "#fff",
+          pointHighlightStroke : "rgba(220,220,220,1)",
+          data : [0,randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),0]
+        },
+        {
+          label: "My Second dataset",
+          fillColor : "rgba(151,187,205,0.2)",
+          strokeColor : "rgba(151,187,205,1)",
+          pointColor : "rgba(151,187,205,1)",
+          pointStrokeColor : "#fff",
+          pointHighlightFill : "#fff",
+          pointHighlightStroke : "rgba(151,187,205,1)",
+          data : [0,randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),0]
+        }
+      ]
+
+    }
+
+
+	  	function graf(){
+	    var ctx = document.getElementById("canvas").getContext("2d");
+	    window.myLine = new Chart(ctx).Line(lineChartData, {
+	      responsive: true
+	    });
+  		}
+
+
+
+
+</script>
+</body>
+</html>
